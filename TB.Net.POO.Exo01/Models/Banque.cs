@@ -41,5 +41,15 @@ namespace TB.Net.POO.Exo01.Models
             _comptes.Remove(numero);
         }
 
+        public double AvoirDesComptes(Personne titulaire)
+        {
+            double avoirs = 0;
+            foreach (Courant compte in _comptes.Values)
+            {
+                if (compte.Titulaire == titulaire) avoirs = avoirs + compte;
+            }
+            return avoirs;
+        }
+
     }
 }

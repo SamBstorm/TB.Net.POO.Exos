@@ -44,7 +44,33 @@ namespace TB.Net.POO.Exo01
             b.Ajouter(c2);
             b.Supprimer(c2.Numero);
             #endregion
+            #region Test Exo03
+            c = new Courant();
+            c.Titulaire = p;
+            c.Numero = "BE5501";
+            c.Depot(300);
 
+            b.Ajouter(c);
+
+            c = new Courant();
+            c.Titulaire = p;
+            c.Numero = "BE5502";
+            c.LigneDeCredit = 200;
+            c.Retrait(50);
+
+            b.Ajouter(c);
+
+            c = new Courant();
+            c.Titulaire = new Personne() { Nom="Bastin", Prenom="Diego", DateNaiss=new DateTime(1995,03,02)};
+            c.Numero = "BE5503";
+            c.LigneDeCredit = 200;
+            c.Depot(50);
+
+            b.Ajouter(c);
+
+            Console.WriteLine($"Les avoirs de M.{p.Nom} sont de {b.AvoirDesComptes(p)}€.");
+            Console.WriteLine($"Les avoirs de M.{c.Titulaire.Nom} sont de {b.AvoirDesComptes(c.Titulaire)}€.");
+            #endregion
         }
     }
 }
