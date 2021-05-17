@@ -7,6 +7,7 @@ namespace TB.Net.POO.Exo01
     {
         static void Main(string[] args)
         {
+            #region Test Exo01
             Personne p = new Personne();
             p.Nom = "Legrain";
             p.Prenom = "Samuel";
@@ -26,10 +27,24 @@ namespace TB.Net.POO.Exo01
             #endregion
 
             #region Soit une instance existante
-            c.Titulaire = p; 
+            c.Titulaire = p;
             #endregion
 
             if (c.Titulaire == p) Console.WriteLine("Ce sont les même!!!");
+            #endregion
+            #region Test Exo02
+            Banque b = new Banque();
+
+            b.Nom = "BanqueRoute";
+
+            b.Ajouter(c);
+            Courant c2 = b[c.Numero];
+            if (c == c2) Console.WriteLine("Il s'agit du même compte!");
+
+            b.Ajouter(c2);
+            b.Supprimer(c2.Numero);
+            #endregion
+
         }
     }
 }
