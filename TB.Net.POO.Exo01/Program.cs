@@ -71,6 +71,21 @@ namespace TB.Net.POO.Exo01
             Console.WriteLine($"Les avoirs de M.{p.Nom} sont de {b.AvoirDesComptes(p)}€.");
             Console.WriteLine($"Les avoirs de M.{c.Titulaire.Nom} sont de {b.AvoirDesComptes(c.Titulaire)}€.");
             #endregion
+
+            #region Test Exo04
+
+            Epargne e = new Epargne();
+            e.Numero = "BE3301";
+            e.Titulaire = p;
+            e.Depot(50000);
+            e.Retrait(60000);
+            Console.WriteLine($"Le solde du compte {e.Numero}, appartenant à {e.Titulaire.Nom}, est de {e.Solde}");
+            Console.WriteLine($"Le dernier retrait date de {e.DateDernierRetrait}");
+            e.Retrait(30000);
+            Console.WriteLine($"Le solde du compte {e.Numero}, appartenant à {e.Titulaire.Nom}, est de {e.Solde}");
+            Console.WriteLine($"Le dernier retrait date de {e.DateDernierRetrait}");
+
+            #endregion
         }
     }
 }

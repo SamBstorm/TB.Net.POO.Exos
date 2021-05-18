@@ -4,27 +4,14 @@ using System.Text;
 
 namespace TB.Net.POO.Exo01.Models
 {
-    public class Epargne
+    public class Epargne : Compte
     {
-        private double _solde;
-        public string Numero { get; set; }
-        public Personne Titulaire { get; set; }
         public DateTime DateDernierRetrait { get; set; }
 
-        public double Solde { get { return _solde; } }
-
-        public void Retrait(double montant)
+        public override void Retrait(double montant)
         {
-            if (montant <= 0) return;
-            if (montant > Solde) return;
-            _solde -= montant;
-            DateDernierRetrait = DateTime.Now;
-        }
-
-        public void Depot(double montant)
-        {
-            if (montant <= 0) return;
-            _solde += montant;
+            base.Retrait(montant);
+            DateDernierRetrait = DateTime.Now; //Grace aux exceptions nous éviterons de déclancher l'enrgistrement de la date
         }
     }
 }
