@@ -8,7 +8,7 @@ namespace TB.Net.POO.Exo01.Models
     {
         //private string _nomBanque;
 
-        private Dictionary<string, Courant> _comptes = new Dictionary<string, Courant>();
+        private Dictionary<string, Compte> _comptes = new Dictionary<string, Compte>();
 
 
         //public string Nom
@@ -19,17 +19,17 @@ namespace TB.Net.POO.Exo01.Models
 
         public string Nom { get; set; }
 
-        public Courant this[string numero]
+        public Compte this[string numero]
         {
             get {
-                Courant c;
+                Compte c;
                 _comptes.TryGetValue(numero, out c);
                 if (c is null) return c; //Gestion d'erreur
                 return c;
             }
         }
 
-        public void Ajouter(Courant courant)
+        public void Ajouter(Compte courant)
         {
             if (_comptes.ContainsValue(courant)) return; //Gestion d'erreur
             _comptes.Add(courant.Numero, courant);
@@ -44,7 +44,7 @@ namespace TB.Net.POO.Exo01.Models
         public double AvoirDesComptes(Personne titulaire)
         {
             double avoirs = 0;
-            foreach (Courant compte in _comptes.Values)
+            foreach (Compte compte in _comptes.Values)
             {
                 if (compte.Titulaire == titulaire) avoirs = avoirs + compte;
             }

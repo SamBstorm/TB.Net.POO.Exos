@@ -38,7 +38,7 @@ namespace TB.Net.POO.Exo01
             b.Nom = "BanqueRoute";
 
             b.Ajouter(c);
-            Courant c2 = b[c.Numero];
+            Courant c2 = (Courant)b[c.Numero];
             if (c == c2) Console.WriteLine("Il s'agit du même compte!");
 
             b.Ajouter(c2);
@@ -84,6 +84,14 @@ namespace TB.Net.POO.Exo01
             e.Retrait(30000);
             Console.WriteLine($"Le solde du compte {e.Numero}, appartenant à {e.Titulaire.Nom}, est de {e.Solde}");
             Console.WriteLine($"Le dernier retrait date de {e.DateDernierRetrait}");
+
+            #endregion
+            #region Test Exo05
+
+            b.Ajouter(e);
+
+            Console.WriteLine($"Les avoirs de M.{p.Nom} sont de {b.AvoirDesComptes(p)}€.");
+            Console.WriteLine($"Les avoirs de M.{c.Titulaire.Nom} sont de {b.AvoirDesComptes(c.Titulaire)}€.");
 
             #endregion
         }
