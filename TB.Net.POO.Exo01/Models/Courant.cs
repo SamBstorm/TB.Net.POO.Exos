@@ -7,7 +7,6 @@ namespace TB.Net.POO.Exo01.Models
     public class Courant : Compte
     {
         private double _ligneDeCredit;
-        private double _solde;
         private double _interetPositif = 0.03;
         private double _interetNegatif = 0.0975;
 
