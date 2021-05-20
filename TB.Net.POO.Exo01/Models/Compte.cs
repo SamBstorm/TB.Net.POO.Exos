@@ -4,7 +4,7 @@ using System.Text;
 
 namespace TB.Net.POO.Exo01.Models
 {
-    public abstract class Compte
+    public abstract class Compte : IBanker
     {
         private double _solde;
         public string Numero { get; set; }

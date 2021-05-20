@@ -105,6 +105,17 @@ namespace TB.Net.POO.Exo01
             c.AppliquerInteret();
             Console.WriteLine($"Le compte courant {c.Numero} a pour Solde {c.Solde}");
             #endregion
+            #region Test Exo07
+            ICustomer customer = c;
+            Console.WriteLine($"En tant que client du compte je peut voir mon Solde : {customer.Solde}");
+            customer.Depot(500);
+            Console.WriteLine($"En tant que client du compte je peut voir mon Solde : {customer.Solde}");
+            IBanker banquier = c;
+            Console.WriteLine($"En tant que banquier je peux voir le Solde : {banquier.Solde} ; le titulaire {banquier.Titulaire.Nom} ; et le numéro {banquier.Numero}");
+            banquier.AppliquerInteret();
+            Console.WriteLine($"En tant que banquier je peux voir le Solde : {banquier.Solde} ; le titulaire {banquier.Titulaire.Nom} ; et le numéro {banquier.Numero}");
+
+            #endregion
         }
     }
 }
