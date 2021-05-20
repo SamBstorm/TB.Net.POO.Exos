@@ -4,7 +4,7 @@ using System.Text;
 
 namespace TB.Net.POO.Exo01.Models
 {
-    public class Compte
+    public abstract class Compte
     {
         private double _solde;
         public string Numero { get; set; }
@@ -24,10 +24,14 @@ namespace TB.Net.POO.Exo01.Models
             _solde -= montant;
         }
 
-        public virtual void Retrait(double montant)
+        public void AppliquerInteret()
         {
-            this.Retrait(montant, 0);
+            _solde += CalculerInteret();
         }
+
+        public abstract void Retrait(double montant);
+
+        protected abstract double CalculerInteret();
         public static double operator +(Compte left, Compte right)
         {
             double solde1 = 0, solde2 = 0;

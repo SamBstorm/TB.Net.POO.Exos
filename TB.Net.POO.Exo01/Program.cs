@@ -71,7 +71,6 @@ namespace TB.Net.POO.Exo01
             Console.WriteLine($"Les avoirs de M.{p.Nom} sont de {b.AvoirDesComptes(p)}€.");
             Console.WriteLine($"Les avoirs de M.{c.Titulaire.Nom} sont de {b.AvoirDesComptes(c.Titulaire)}€.");
             #endregion
-
             #region Test Exo04
 
             Epargne e = new Epargne();
@@ -93,6 +92,18 @@ namespace TB.Net.POO.Exo01
             Console.WriteLine($"Les avoirs de M.{p.Nom} sont de {b.AvoirDesComptes(p)}€.");
             Console.WriteLine($"Les avoirs de M.{c.Titulaire.Nom} sont de {b.AvoirDesComptes(c.Titulaire)}€.");
 
+            #endregion
+            #region Test Exo06
+            Console.WriteLine($"Le compte courant {c.Numero} a pour Solde {c.Solde}");
+            Console.WriteLine($"Le compte courant {e.Numero} a pour Solde {e.Solde}");
+            c.AppliquerInteret();
+            e.AppliquerInteret();
+            Console.WriteLine($"Le compte courant {c.Numero} a pour Solde {c.Solde}");
+            Console.WriteLine($"Le compte courant {e.Numero} a pour Solde {e.Solde}");
+            c.Retrait(65);
+            Console.WriteLine($"Le compte courant {c.Numero} a pour Solde {c.Solde}");
+            c.AppliquerInteret();
+            Console.WriteLine($"Le compte courant {c.Numero} a pour Solde {c.Solde}");
             #endregion
         }
     }
