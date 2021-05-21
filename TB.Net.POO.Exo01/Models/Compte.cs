@@ -7,9 +7,19 @@ namespace TB.Net.POO.Exo01.Models
     public abstract class Compte : IBanker
     {
         private double _solde;
-        public string Numero { get; set; }
-        public Personne Titulaire { get; set; }
+        public string Numero { get; private set; }
+        public Personne Titulaire { get; private set; }
         public double Solde { get { return _solde; } }
+
+        public Compte(string numero, Personne titulaire)
+        {
+            this.Numero = numero;
+            this.Titulaire = titulaire;
+        }
+        public Compte(string numero, Personne titulaire, double solde) : this(numero, titulaire)
+        {
+            this._solde = solde;
+        }
 
         public void Depot(double montant)
         {

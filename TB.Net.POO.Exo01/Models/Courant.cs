@@ -18,6 +18,19 @@ namespace TB.Net.POO.Exo01.Models
                 _ligneDeCredit = value;
             }//set { if (value >= 0) _ligneDeCredit = value; }
         }
+        public Courant(string numero, Personne titulaire) : base(numero, titulaire)
+        {
+
+        }
+
+        public Courant(string numero, Personne titulaire, double ligneDeCredit) : this(numero, titulaire,default(double),ligneDeCredit)
+        {
+        }
+
+        public Courant(string numero, Personne titulaire, double solde, double ligneDeCredit): base(numero, titulaire, solde)
+        {
+            this.LigneDeCredit = ligneDeCredit;
+        }
 
         public override void Retrait(double montant) {
             base.Retrait(montant, LigneDeCredit);

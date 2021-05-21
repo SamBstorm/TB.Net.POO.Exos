@@ -8,27 +8,11 @@ namespace TB.Net.POO.Exo01
         static void Main(string[] args)
         {
             #region Test Exo01
-            Personne p = new Personne();
-            p.Nom = "Legrain";
-            p.Prenom = "Samuel";
-            p.DateNaiss = new DateTime(1987, 9, 27);
+            Personne p = new Personne("Legrain","Samuel",new DateTime(1987, 9, 27));
 
-            Courant c = new Courant();
-            c.Numero = "BE54736489001234";
-            c.LigneDeCredit = -200;
+            Courant c = new Courant("BE54736489001234",p,-200);
             c.Depot(5000000);
             c.Retrait(-500000);
-
-            #region Soit une nouvelle instance
-            c.Titulaire = new Personne();
-            c.Titulaire.Nom = "Legrain";
-            c.Titulaire.Prenom = "Samuel";
-            c.Titulaire.DateNaiss = new DateTime(1987, 9, 27);
-            #endregion
-
-            #region Soit une instance existante
-            c.Titulaire = p;
-            #endregion
 
             if (c.Titulaire == p) Console.WriteLine("Ce sont les même!!!");
             #endregion
@@ -45,25 +29,17 @@ namespace TB.Net.POO.Exo01
             b.Supprimer(c2.Numero);
             #endregion
             #region Test Exo03
-            c = new Courant();
-            c.Titulaire = p;
-            c.Numero = "BE5501";
+            c = new Courant("BE5501",p);
             c.Depot(300);
 
             b.Ajouter(c);
 
-            c = new Courant();
-            c.Titulaire = p;
-            c.Numero = "BE5502";
-            c.LigneDeCredit = 200;
+            c = new Courant("BE5502",p,200);
             c.Retrait(50);
 
             b.Ajouter(c);
 
-            c = new Courant();
-            c.Titulaire = new Personne() { Nom="Bastin", Prenom="Diego", DateNaiss=new DateTime(1995,03,02)};
-            c.Numero = "BE5503";
-            c.LigneDeCredit = 200;
+            c = new Courant("BE5503",new Personne("Bastin", "Diego", new DateTime(1995,03,02)), 200);
             c.Depot(50);
 
             b.Ajouter(c);
@@ -73,9 +49,7 @@ namespace TB.Net.POO.Exo01
             #endregion
             #region Test Exo04
 
-            Epargne e = new Epargne();
-            e.Numero = "BE3301";
-            e.Titulaire = p;
+            Epargne e = new Epargne("BE3301",p);
             e.Depot(50000);
             e.Retrait(60000);
             Console.WriteLine($"Le solde du compte {e.Numero}, appartenant à {e.Titulaire.Nom}, est de {e.Solde}");
