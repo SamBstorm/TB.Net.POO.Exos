@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using ToolBox.Exceptions;
 
 namespace TB.Net.POO.Exo01.Models
 {
@@ -23,14 +24,14 @@ namespace TB.Net.POO.Exo01.Models
 
         public void Depot(double montant)
         {
-            if (montant <= 0) return;
+            if (montant <= 0) throw new ArgumentOutOfRangeException($"Le montant : {montant} ; est inférieur ou égale à zéro, veuillez indiquer un montant supérieur.");
             _solde += montant;
         }
 
         protected void Retrait(double montant, double limite)
         {
-            if (montant <= 0) return;
-            if (montant > Solde + limite) return;
+            if (montant <= 0) throw new ArgumentOutOfRangeException($"Le montant : {montant} ; est inférieur ou égale à zéro, veuillez indiquer un montant supérieur.");
+            if (montant > Solde + limite) throw new SoldeInsuffisantException(Solde,montant,limite);
             _solde -= montant;
         }
 

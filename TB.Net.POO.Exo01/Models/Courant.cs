@@ -13,8 +13,8 @@ namespace TB.Net.POO.Exo01.Models
         public double LigneDeCredit
         {
             get { return _ligneDeCredit; }
-            set { 
-                if (value < 0) return;      //return doit être remplacer par une gestion d'erreur
+            set {
+                if (value < 0) throw new InvalidOperationException("La ligne de crédit doit être supérieur ou égale à 0.");
                 _ligneDeCredit = value;
             }//set { if (value >= 0) _ligneDeCredit = value; }
         }
