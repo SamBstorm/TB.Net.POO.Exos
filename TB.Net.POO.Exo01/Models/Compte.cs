@@ -12,7 +12,7 @@ namespace TB.Net.POO.Exo01.Models
         public Personne Titulaire { get; private set; }
         public double Solde { get { return _solde; } }
 
-        public event PassageEnNegatifDelegate PassageEnNegatifEvent;
+        public event Action<Compte> PassageEnNegatifEvent;
 
         public Compte(string numero, Personne titulaire)
         {
