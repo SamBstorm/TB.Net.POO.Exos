@@ -12,10 +12,13 @@ namespace TB.Net.POO.Exo01.Models
         public Personne Titulaire { get; private set; }
         public double Solde { get { return _solde; } }
 
+        public event PassageEnNegatifDelegate PassageEnNegatifEvent;
+
         public Compte(string numero, Personne titulaire)
         {
             this.Numero = numero;
             this.Titulaire = titulaire;
+            this.PassageEnNegatifEvent = null;
         }
         public Compte(string numero, Personne titulaire, double solde) : this(numero, titulaire)
         {
@@ -71,6 +74,12 @@ namespace TB.Net.POO.Exo01.Models
             return solde1 + solde2;
 
             //return ((left > 0) ? left : 0) + ((right.Solde > 0) ? right.Solde : 0);
+        }
+
+        protected void PassageEnNegatifRaise(Compte compte)
+        {
+            //if(!(PassageEnNegatifEvent is null))this.PassageEnNegatifEvent(compte);
+            this.PassageEnNegatifEvent?.Invoke(compte);
         }
     }
 }

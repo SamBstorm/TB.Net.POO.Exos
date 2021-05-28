@@ -13,9 +13,9 @@ namespace TB.Net.POO.Exo01
                 #region Test Exo01
                 Personne p = new Personne("Legrain", "Samuel", new DateTime(1987, 9, 27));
 
-                Courant c = new Courant("BE54736489001234", p, -200);
+                Courant c = new Courant("BE54736489001234", p, 200);
                 c.Depot(5000000);
-                c.Retrait(-500000);
+                c.Retrait(5000001);
 
                 if (c.Titulaire == p) Console.WriteLine("Ce sont les même!!!");
                 #endregion
@@ -46,6 +46,7 @@ namespace TB.Net.POO.Exo01
                 c.Depot(50);
 
                 b.Ajouter(c);
+                c.Retrait(100);
 
                 Console.WriteLine($"Les avoirs de M.{p.Nom} sont de {b.AvoirDesComptes(p)}€.");
                 Console.WriteLine($"Les avoirs de M.{c.Titulaire.Nom} sont de {b.AvoirDesComptes(c.Titulaire)}€.");

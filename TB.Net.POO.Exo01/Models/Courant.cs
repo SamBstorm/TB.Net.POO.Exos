@@ -33,7 +33,9 @@ namespace TB.Net.POO.Exo01.Models
         }
 
         public override void Retrait(double montant) {
+            bool alreadyNegatif = this.Solde < 0;
             base.Retrait(montant, LigneDeCredit);
+            if (!alreadyNegatif && Solde < 0) PassageEnNegatifRaise(this);
         }
 
         protected override double CalculerInteret()

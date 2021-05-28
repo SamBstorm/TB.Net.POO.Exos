@@ -33,12 +33,15 @@ namespace TB.Net.POO.Exo01.Models
         {
             if (_comptes.ContainsValue(courant)) return; //Gestion d'erreur
             _comptes.Add(courant.Numero, courant);
+            courant.PassageEnNegatifEvent += PassageEnNegatifAction;
         }
 
         public void Supprimer(string numero)
         {
             if (!_comptes.ContainsKey(numero)) return; //Gestion d'erreur
+            _comptes[numero].PassageEnNegatifEvent -= PassageEnNegatifAction;
             _comptes.Remove(numero);
+
         }
 
         public double AvoirDesComptes(Personne titulaire)
@@ -49,6 +52,11 @@ namespace TB.Net.POO.Exo01.Models
                 if (compte.Titulaire == titulaire) avoirs = avoirs + compte;
             }
             return avoirs;
+        }
+
+        public void PassageEnNegatifAction(Compte compte)
+        {
+            Console.WriteLine($"Le compte {compte.Numero} est passé en négatif.");
         }
 
     }
